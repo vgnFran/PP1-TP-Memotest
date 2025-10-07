@@ -1,13 +1,13 @@
 const arrayColores = ["green", "blue", "red", "yellow", "brown", "black", "gray", "pink", "green", "blue", "red", "yellow", "brown", "black", "gray", "pink"] // array de colores
 
-let piezasMezcladas = _.shuffle(arrayColores)
+let piezasMezcladas = _.shuffle(arrayColores)  //mezclamos el array de colores 
 
 const containerMemotest = document.querySelector("#container-memotest") // guardamos en una variable el ELEMENTO con el id container-memotest
 
 
 for(i = 0; i < piezasMezcladas.length; i++){  //iteramos el array de colores
 
-  let elemento = document.createElement("div")  //creo un div html
+  let elemento = document.createElement("div")  //creo un div 
   elemento.dataset.color=piezasMezcladas[i]   //a cada div le asignamos un data-set (ej:data-color=red)
   elemento.classList.add("pieza")  //a ese div que creamos le pongo la clase .pieza
 
@@ -16,7 +16,10 @@ for(i = 0; i < piezasMezcladas.length; i++){  //iteramos el array de colores
   containerMemotest.appendChild(elemento)  //en el div contenedor agregamos el nuevo elemento (pieza)
 }
 
-const piezas = document.querySelectorAll(".pieza")  //en la variable piezas guardamos TODOS los elementos con la clase pieza
+//una vez creadas todas las piezas
+
+const piezas = document.querySelectorAll(".pieza")  //en la variable piezas guardamos TODOS los elementos con la clase pieza (16 elementos)
+
 
 let primeraSeleccion = null
 let segundaSeleccion = null
@@ -34,33 +37,32 @@ for(let i = 0; i < piezas.length; i++){  //recorremos todas las piezas que guard
 
   piezas[i].onclick = () =>{  //asignamos un evento click a cada uno de los elementos con clase "pieza"
 
-    let pieza = piezas[i]
+    let pieza = piezas[i]  //guardamos en la variable pieza el elemento completo 
 
-
-    piezas[i].style.backgroundColor = piezas[i].dataset.color   //mostramos el color que se le asigno .
-    piezas[i].style.backgroundImage="none"  //ocultamos la imagen 
+    pieza.style.backgroundColor = piezas[i].dataset.color   //mostramos el color que se le asigno .
+    pieza.style.backgroundImage="none"  //ocultamos la imagen 
 
     if (!primeraSeleccion) { // si primera seleccion es null (esta vacio) guarda su valor
 
-      primeraSeleccion = pieza
+      primeraSeleccion = pieza 
       return
     }
 
     segundaSeleccion = pieza  // segunda carta levantada
 
-    if(primeraSeleccion.dataset.color == segundaSeleccion.dataset.color){
+    if(primeraSeleccion.dataset.color == segundaSeleccion.dataset.color){  // si los colores de las piezas seleccionadas son iguales "hay coincidencia"
 
       console.log("hay coincidencia")
-      resetTurno()
-      contador(turno)
+
+      resetTurno()  // reseteamos las variables a null para poder asignar nuevos valores en los nuevos clicks 
+      contador(turno)  // sumanos 1 al jugador que este de turno actualmente 
 
     } else {
 
       console.log("no hay coincidencia")
       console.log("finalizo el turno")
 
-
-      setTimeout(() => {
+      setTimeout(() => { //esperamos 1.5 segundos y removemos propiedades que asignamos, y volvemos a agregar el fondo original 
         
         primeraSeleccion.style.removeProperty("background-color")
         primeraSeleccion.style.removeProperty("background-image")
@@ -84,12 +86,14 @@ for(let i = 0; i < piezas.length; i++){  //recorremos todas las piezas que guard
 }
 
 
-function resetTurno() {
+function resetTurno() { //seteo de variables en null para poder asignar nuevos valores y no confundir con valores anteriores
+
   primeraSeleccion = null
   segundaSeleccion = null
+
 }
 
-function cambiarTurno() {
+function cambiarTurno() { //funcion para cambiar el turno del jugador actual al jugador contrario 
 
   if(turno == 1){
     turno = 2
@@ -98,10 +102,10 @@ function cambiarTurno() {
   }
 
   console.log("turno deljugador: ", turno)
-  spanTurnoDe.textContent = turno
+  spanTurnoDe.textContent = turno //mostrar en el html de quien es el turno actual
 }
 
-function contador(turno){
+function contador(turno){  // funcion para sumar 1 al jugador actual 
 
   if(turno == 1){
     contadorJugador1 += 1
@@ -109,8 +113,23 @@ function contador(turno){
     contadorJugador2 += 1
   }
 
-  spanJugador1.textContent = contadorJugador1
+  //mostrar los contadores actualizados en el htm
+  spanJugador1.textContent = contadorJugador1  
   spanJugador2.textContent = contadorJugador2
 
+  if(contadorJugador1 == 5){
+
+    alert("GANO EL JUGADOR 1")  //mostrar alerta
+    window.location.href="/"  //recargar pagina 
+
+  } else if (contadorJugador2 == 5){
+
+    alert("GANO EL JUGADOR 2")  //mostrar alerta
+    window.location.href="/"  //recargar pagina 
+
+  }
+
 }
+
+
 
