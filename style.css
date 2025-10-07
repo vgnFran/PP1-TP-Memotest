@@ -5,3 +5,15 @@
     
 
 }
+
+.pieza{
+    width: 100px;
+    height: 100px;
+}
+
+
+.background-pieza{
+  background-image: url('imgs/pieza-abz.jpg');
+  background-position: center;
+  background-size: cover;
+}

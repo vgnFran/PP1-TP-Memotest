@@ -7,17 +7,13 @@ const containerMemotest = document.querySelector("#container-memotest") // guard
 
 for(i = 0; i < piezasMezcladas.length; i++){  //iteramos el array de colores
 
-    let elemento = document.createElement("div")  //creo un div html
-    elemento.dataset.color=piezasMezcladas[i]   //a cada div le asignamos un data-set (ej:data-color=red)
-    elemento.classList.add("pieza")  //a ese div que creamos le pongo la clase .pieza
+  let elemento = document.createElement("div")  //creo un div html
+  elemento.dataset.color=piezasMezcladas[i]   //a cada div le asignamos un data-set (ej:data-color=red)
+  elemento.classList.add("pieza")  //a ese div que creamos le pongo la clase .pieza
 
-    elemento.style.width="100px"
-    elemento.style.height="100px"
-    elemento.style.backgroundImage = "url('./imgs/pieza-abz.jpg')";  //imagen de fondo
-    elemento.style.backgroundPosition = "center"
-    elemento.style.backgroundSize="cover"
+  elemento.classList.add("background-pieza")
 
-    containerMemotest.appendChild(elemento)  //en el div contenedor agregamos el nuevo elemento (pieza)
+  containerMemotest.appendChild(elemento)  //en el div contenedor agregamos el nuevo elemento (pieza)
 }
 
 const piezas = document.querySelectorAll(".pieza")  //en la variable piezas guardamos TODOS los elementos con la clase pieza
@@ -30,35 +26,60 @@ let turno = 1
 let contadorJugador1 = 0
 let contadorJugador2 = 0
 
+const spanJugador1 = document.querySelector("#span-jugador1")  
+const spanJugador2 = document.querySelector("#span-jugador2")
+const spanTurnoDe = document.querySelector("#mostrar-turno")
+
 for(let i = 0; i < piezas.length; i++){  //recorremos todas las piezas que guardamos en la variable "piezas"
 
-    piezas[i].onclick = () =>{  //asignamos un evento click a cada uno de los elementos con clase "pieza"
+  piezas[i].onclick = () =>{  //asignamos un evento click a cada uno de los elementos con clase "pieza"
 
-        let pieza = piezas[i]
+    let pieza = piezas[i]
 
 
-        piezas[i].style.backgroundColor = piezas[i].dataset.color   //mostramos el color que se le asigno .
-        piezas[i].style.backgroundImage="none"  //ocultamos la imagen 
+    piezas[i].style.backgroundColor = piezas[i].dataset.color   //mostramos el color que se le asigno .
+    piezas[i].style.backgroundImage="none"  //ocultamos la imagen 
 
-        if (!primeraSeleccion) { // primera carta levantada
+    if (!primeraSeleccion) { // si primera seleccion es null (esta vacio) guarda su valor
 
-            primeraSeleccion = pieza
-            return
-        }
+      primeraSeleccion = pieza
+      return
+    }
 
-        segundaSeleccion = pieza  // segunda carta levantada
+    segundaSeleccion = pieza  // segunda carta levantada
 
-        if(primeraSeleccion.dataset.color == segundaSeleccion.dataset.color){
-            console.log("hay coincidencia")
-        } else {
-            console.log("no hay coincidencia")
-        }
+    if(primeraSeleccion.dataset.color == segundaSeleccion.dataset.color){
 
-        console.log("finalizo el turno")
+      console.log("hay coincidencia")
+      resetTurno()
+      contador(turno)
+
+    } else {
+
+      console.log("no hay coincidencia")
+      console.log("finalizo el turno")
+
+
+      setTimeout(() => {
+        
+        primeraSeleccion.style.removeProperty("background-color")
+        primeraSeleccion.style.removeProperty("background-image")
+        primeraSeleccion.classList.add("background-pieza")
+
+        segundaSeleccion.style.removeProperty("background-color")
+        segundaSeleccion.style.removeProperty("background-image")
+        segundaSeleccion.classList.add("background-pieza")
+
         resetTurno()
         cambiarTurno()
 
+      }, 1500)
+
+
     }
+
+
+  }
 
 }
 
@@ -77,4 +98,19 @@ function cambiarTurno() {
   }
 
   console.log("turno deljugador: ", turno)
+  spanTurnoDe.textContent = turno
 }
+
+function contador(turno){
+
+  if(turno == 1){
+    contadorJugador1 += 1
+  } else{
+    contadorJugador2 += 1
+  }
+
+  spanJugador1.textContent = contadorJugador1
+  spanJugador2.textContent = contadorJugador2
+
+}
+
