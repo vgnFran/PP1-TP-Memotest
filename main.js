@@ -34,49 +34,47 @@ for(let i = 0; i < piezas.length; i++){  //recorremos todas las piezas que guard
 
     piezas[i].onclick = () =>{  //asignamos un evento click a cada uno de los elementos con clase "pieza"
 
-        segundaSeleccion = piezas[i].dataset.color  //guardamos en esta variable la seleccion actual 
-        console.log("seleccion actual: ", segundaSeleccion)
-        console.log("ultima seleccion: ", primeraSeleccion)
+        let pieza = piezas[i]
+
 
         piezas[i].style.backgroundColor = piezas[i].dataset.color   //mostramos el color que se le asigno .
         piezas[i].style.backgroundImage="none"  //ocultamos la imagen 
 
-        if(segundaSeleccion == primeraSeleccion){  // si la seleccion actual es igual a lo que tenemos guardado en ultima seleccion entonces coincide
+        if (!primeraSeleccion) { // primera carta levantada
 
-            console.log("COINCIDE")
-            contadorJugador1 += 1
-
-
-
-        } else {
-
-            primeraSeleccion = piezas[i].dataset.color
-            console.log("NO COINCIDE")
-
-            if(turno == 1){
-                turno = 2
-                console.log("finaliza el turno del jugador uno, comienza el turno del jugador dos")
-            } else if(turno == 2){
-                turno = 1
-                console.log("finaliza el turno del jugador dos, comienza el turno del jugador uno")
-
-            }
-
-
+            primeraSeleccion = pieza
+            return
         }
-        
+
+        segundaSeleccion = pieza  // segunda carta levantada
+
+        if(primeraSeleccion.dataset.color == segundaSeleccion.dataset.color){
+            console.log("hay coincidencia")
+        } else {
+            console.log("no hay coincidencia")
+        }
+
+        console.log("finalizo el turno")
+        resetTurno()
+        cambiarTurno()
 
     }
 
 }
 
 
+function resetTurno() {
+  primeraSeleccion = null
+  segundaSeleccion = null
+}
 
+function cambiarTurno() {
 
+  if(turno == 1){
+    turno = 2
+  } else {
+    turno = 1
+  }
 
-//tenemos una variable que se llama primeraSeleccion
-//detectamos el click en cada pieza y vemos su color
-//guardamos el color en primeraSeleccion
-
-//al hacer un click analizamos si la variable primeraSeleccion tiene guardado el mismo color que el click actual
-
+  console.log("turno deljugador: ", turno)
+}
