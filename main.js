@@ -20,6 +20,7 @@ for(i = 0; i < piezasMezcladas.length; i++){  //iteramos el array de colores
 
 const piezas = document.querySelectorAll(".pieza")  //en la variable piezas guardamos TODOS los elementos con la clase pieza (16 elementos)
 
+let bloqueo = false  // variable para bloquear los clics mientras se evalua resultados de la seleccion
 
 let primeraSeleccion = null
 let segundaSeleccion = null
@@ -37,6 +38,10 @@ for(let i = 0; i < piezas.length; i++){  //recorremos todas las piezas que guard
 
   piezas[i].onclick = () =>{  //asignamos un evento click a cada uno de los elementos con clase "pieza"
 
+    if(bloqueo){ //si se esta evaluando la seleccion salimos de la funcion (onclick)
+      return
+    }
+
     let pieza = piezas[i]  //guardamos en la variable pieza el elemento completo 
 
     pieza.style.backgroundColor = piezas[i].dataset.color   //mostramos el color que se le asigno .
@@ -50,12 +55,21 @@ for(let i = 0; i < piezas.length; i++){  //recorremos todas las piezas que guard
 
     segundaSeleccion = pieza  // segunda carta levantada
 
+    bloqueo = true  // bloqueo para evaluar seleccion
+
     if(primeraSeleccion.dataset.color == segundaSeleccion.dataset.color){  // si los colores de las piezas seleccionadas son iguales "hay coincidencia"
 
       console.log("hay coincidencia")
 
-      resetTurno()  // reseteamos las variables a null para poder asignar nuevos valores en los nuevos clicks 
       contador(turno)  // sumanos 1 al jugador que este de turno actualmente 
+
+      // desactiva eventos en las piezas seleccionadas para que no se vuelvan a seleccionar 
+      primeraSeleccion.onclick = null
+      segundaSeleccion.onclick = null
+
+      resetTurno()  // reseteamos las variables a null para poder asignar nuevos valores en los nuevos clicks 
+
+      bloqueo = false // desbloqueo para seguir eligiendo 
 
     } else {
 
@@ -72,8 +86,10 @@ for(let i = 0; i < piezas.length; i++){  //recorremos todas las piezas que guard
         segundaSeleccion.style.removeProperty("background-image")
         segundaSeleccion.classList.add("background-pieza")
 
-        resetTurno()
-        cambiarTurno()
+        resetTurno() // reseteamos las variables a null para poder asignar nuevos valores en los nuevos clicks 
+        cambiarTurno() // cambiamos turno del jugador
+
+        bloqueo = false // desbloqueo para seguir eligiendo 
 
       }, 1500)
 
