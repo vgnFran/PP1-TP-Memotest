@@ -1,4 +1,4 @@
-const arrayColores = ["green", "blue", "red", "yellow", "brown", "black", "gray", "pink", "green", "blue", "red", "yellow", "brown", "black", "gray", "pink"] // array de colores
+const arrayColores = ["green", "blue", "red", "yellow", "brown", "black", "gray", "pink", "green", "blue", "red", "yellow", "brown", "black", "gray", "pink", "gold", "purple", "orange", "gold", "purple", "orange", "white", "white"] // array de colores
 
 let piezasMezcladas = _.shuffle(arrayColores)  //mezclamos el array de colores 
 
@@ -133,12 +133,12 @@ function contador(turno){  // funcion para sumar 1 al jugador actual
   spanJugador1.textContent = contadorJugador1  
   spanJugador2.textContent = contadorJugador2
 
-  if(contadorJugador1 == 5){
+  if(contadorJugador1 == 7){
 
     alert("GANO EL JUGADOR 1")  //mostrar alerta
     window.location.href="/"  //recargar pagina 
 
-  } else if (contadorJugador2 == 5){
+  } else if (contadorJugador2 == 7){
 
     alert("GANO EL JUGADOR 2")  //mostrar alerta
     window.location.href="/"  //recargar pagina 

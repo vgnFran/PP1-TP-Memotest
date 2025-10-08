@@ -66,9 +66,9 @@ main{
 
 #container-memotest{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   gap: 8px 0px;
-  width: 40%;
+  width: 60%;
 }
 
 .pieza{
