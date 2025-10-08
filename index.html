@@ -5,23 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css"></head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alan+Sans:wght@300..900&family=Barriecito&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+
 <body>
     
-    <div>
-        <p>Jugador 1: <span id="span-jugador1">0</span></p>
-    </div>
+    <header>
+        
+        <div class="container-marcador">
+            <p>Jugador 1: <span id="span-jugador1">0</span></p>
+        </div>
 
-    <div>
-        <p>Jugador 2: <span id="span-jugador2">0</span></p>
-    </div>
+        <div>
+            <p id="memotest-titulo">MEMOTEST</p>
+        </div>
 
-    <div>
-        <p>Es el turno del jugador: <span id="mostrar-turno">1</span></p>
-    </div>
+        <div class="container-marcador">
+            <p>Jugador 2: <span id="span-jugador2">0</span></p>
+        </div>
 
-    <div id="container-memotest">
+    </header>
+    
+    <main>
 
-    </div>
+        <p id="p-turnos">Es el turno del jugador: <span id="mostrar-turno">1</span></p>
+
+
+        <section id="container-memotest">
+
+        </section>
+
+
+    </main>
+
 
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
     <script src="main.js"></script> 

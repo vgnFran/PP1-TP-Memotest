@@ -1,15 +1,80 @@
-#container-memotest{
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; 
+}
 
-    width: 100%;
-    height: 100%;
-    
+header{
+  display: flex;
+  justify-content:space-around;
+  align-items: center;
+  background-color: rgb(244, 238, 199);;
+}
+
+
+
+#memotest-titulo{
+  font-family: "Barriecito", system-ui;
+  font-weight: 600;
+  font-size: 60px;
+  color: rgb(207, 183, 47);
+  text-shadow: 1px 1px 7px rgba(0,0,0,0.28);
+  letter-spacing: 2px;
+}
+
+main{
+  background-color: rgb(244, 238, 199);
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#p-turnos{
+  font-family: "Alan Sans", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  font-size: 26px;
+  letter-spacing: 1px;
+  color: rgb(207, 183, 47);
+  text-shadow: 1px 1px 7px rgba(0,0,0,0.);
+  margin-bottom: 1%;
+}
+
+#p-turnos span{
+  color: rgb(43, 51, 175);
+}
+
+.container-marcador{
+  font-family: "Alan Sans", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  font-size: 26px;
+  letter-spacing: 1px;
+  color: rgb(207, 183, 47);
+  text-shadow: 1px 1px 7px rgba(0,0,0,0.28);
+}
+
+#span-jugador1{
+  color: #c54a4a;
+}
+
+#span-jugador2{
+  color: #ffa200;
+}
+
+#container-memotest{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 8px 0px;
+  width: 40%;
 }
 
 .pieza{
-    width: 100px;
-    height: 100px;
+  width: 9vw;
+  height: 20vh;
 }
-
 
 .background-pieza{
   background-image: url('imgs/pieza-abz.jpg');
