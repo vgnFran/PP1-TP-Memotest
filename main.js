@@ -133,12 +133,12 @@ function contador(turno){  // funcion para sumar 1 al jugador actual
   spanJugador1.textContent = contadorJugador1  
   spanJugador2.textContent = contadorJugador2
 
-  if(contadorJugador1 == 7){
+  if(contadorJugador1 == 6){
 
     alert("GANO EL JUGADOR 1")  //mostrar alerta
     window.location.href="/"  //recargar pagina 
 
-  } else if (contadorJugador2 == 7){
+  } else if (contadorJugador2 == 6){
 
     alert("GANO EL JUGADOR 2")  //mostrar alerta
     window.location.href="/"  //recargar pagina 
