@@ -1,24 +1,12 @@
-# 🧠 Juego de Memotest  
-**Materia:** Prácticas Profesionalizantes I  
-**Grupo:** ABZ  
+# Juego de Memotest  
 
-**Integrantes:**  
-- Maximiliano Aguilera  
-- Tobías López Ramírez  
-- Ezequiel Delipetro  
-- Franco Hoyos  
-- Federico Torres  
-- Julián Sánchez  
-
----
-
-## 📋 Descripción  
+## Descripción  
 Este proyecto es un **juego de Memotest** desarrollado en **JavaScript**, como trabajo práctico de la materia **Prácticas Profesionalizantes I**.  
 El objetivo del juego es encontrar las parejas de colores iguales antes que el otro jugador. Participan **dos jugadores** que se turnan para seleccionar fichas.
 
 ---
 
-## 🕹️ Funcionamiento  
+##  Funcionamiento  
 - Se genera un tablero con fichas de colores ocultas.  
 - Cada color tiene su **par**, y las fichas se mezclan aleatoriamente al iniciar el juego.  
 - En cada turno, el jugador puede **dar vuelta dos fichas**:
@@ -29,7 +17,7 @@ El objetivo del juego es encontrar las parejas de colores iguales antes que el o
 
 ---
 
-## ⚙️ Tecnologías utilizadas  
+##  Tecnologías utilizadas  
 - **HTML5** — estructura de la página.  
 - **CSS3** — estilos y diseño visual del tablero.  
 - **JavaScript (ES6)** — lógica principal del juego.  
@@ -37,7 +25,7 @@ El objetivo del juego es encontrar las parejas de colores iguales antes que el o
 
 ---
 
-## 🚀 Cómo jugar  
+##  Cómo jugar  
 1. Abrir el archivo `index.html` en un navegador.  
 2. Se mostrará el tablero del juego y los contadores de cada jugador.  
 3. Hacer clic sobre las fichas para ir descubriéndolas.  
@@ -46,7 +34,7 @@ El objetivo del juego es encontrar las parejas de colores iguales antes que el o
 
 ---
 
-## 💡 Detalles importantes  
+##  Detalles importantes  
 - Cada ficha tiene un color asignado mediante un atributo `data-color`.  
 - El código controla los turnos, los aciertos y evita que se seleccionen más de dos fichas a la vez.  
 - El contador de cada jugador se actualiza automáticamente en pantalla.  
@@ -54,7 +42,7 @@ El objetivo del juego es encontrar las parejas de colores iguales antes que el o
 
 ---
 
-## 👩‍💻 Autores  
+##  Autores  
 **Grupo ABZ**  
 Integrantes:  
 - Maximiliano Aguilera  
